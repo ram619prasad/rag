@@ -1,0 +1,51 @@
+
+[
+  {
+    "id": "q001",
+    "question": "Which controller manages ReplicaSets during rolling updates?",
+    "expected_answer": "The Deployment controller manages ReplicaSets.",
+    "answerable": true,
+    "evidence_keywords": ["Deployment controller", "ReplicaSets"],
+    "relevant_chunk_ids": ["kubernetes_hpa_chunk:005", "kubernetes_hpa_chunk:006"]
+  },
+  {
+    "id": "q002",
+    "question": "A Deployment has 4 replicas, 90% CPU utilization, and a 60% target. What is the desired replica count?",
+    "expected_answer": "6 replicas",
+    "answerable": true,
+    "evidence_keywords": ["desiredReplicas", "90", "60"],
+    "relevant_chunk_ids": ["kubernetes_hpa_chunk:004"]
+  },
+  {
+    "id": "q003",
+    "question": "What mechanisms help prevent frequent HPA scaling fluctuations?",
+    "expected_answer": "Stabilization policies and scaling tolerance help prevent flapping.",
+    "answerable": true,
+    "evidence_keywords": ["stabilization", "tolerance"],
+    "relevant_chunk_ids": ["kubernetes_hpa_chunk:008"]
+  },
+  {
+    "id": "q004",
+    "question": "What are the minimum and maximum replicas in the orders-api HPA configuration?",
+    "expected_answer": "Minimum 2 replicas and maximum 10 replicas.",
+    "answerable": true,
+    "evidence_keywords": ["minReplicas", "maxReplicas"],
+    "relevant_chunk_ids": ["kubernetes_hpa_chunk:011"]
+  },
+  {
+    "id": "q005",
+    "question": "Who created Kubernetes, and in which year?",
+    "expected_answer": null,
+    "answerable": false,
+    "evidence_keywords": [],
+    "relevant_chunk_ids": []
+  },
+  {
+    "id": "q006",
+    "question": "What database does the orders-api application use?",
+    "expected_answer": null,
+    "answerable": false,
+    "evidence_keywords": [],
+    "relevant_chunk_ids": []
+  }
+]

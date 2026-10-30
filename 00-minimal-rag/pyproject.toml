@@ -1,0 +1,21 @@
+[project]
+name = "00-minimal-rag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "langchain-chroma>=1.1.0",
+    "langchain-community>=0.4.2",
+    "langchain-core>=1.7.1",
+    "langchain-openai>=1.7.3",
+    "langchain-text-splitters>=1.1.3",
+    "python-dotenv>=1.2.4",
+]
+
+[project.scripts]
+00-minimal-rag = "00_minimal_rag:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
