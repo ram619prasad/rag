@@ -2,6 +2,33 @@
 from pathlib import Path
 import pymupdf
 
+def inspect_table_layout(file_path: str | Path) -> None:
+    with pymupdf.open(file_path) as pdf:
+        for page_number, page in enumerate(pdf, start=1):
+            lines = [
+                line.strip()
+                for line in page.get_text("text", sort=True).splitlines()
+                if line.strip()
+            ]
+
+            print(f"\nPage {page_number}")
+            print("First lines:", lines[:3])
+            print("Last lines:", lines[-3:])
+        
+    with pymupdf.open(file_path) as pdf:
+        page = pdf[2]
+
+        finder = page.find_tables()
+
+        for table in finder.tables:
+            print("Header names:", table.header.names)
+            print("Header external:", table.header.external)
+            print("Header bbox:", table.header.bbox)
+            print("Table bbox:", table.bbox)
+
+            print("\nExtracted rows:")
+            for row in table.extract():
+                print(row)
 
 def inspect_pdf_layout(file_path: str | Path) -> None:
     with pymupdf.open(file_path) as pdf:
@@ -61,5 +88,42 @@ def inspect_pdf_layout(file_path: str | Path) -> None:
         print("Contains page number at beginning:", text.lstrip().startswith("1"))
 
 
+def inspect_complex_pdf(file_path: str | Path) -> None:
+    with pymupdf.open(file_path) as pdf:
+        page = pdf[1]  # The deliberately challenging second page
+
+        print("=== Original order ===")
+        print(page.get_text("text", sort=False)[:1500])
+
+        print("\n=== Sorted order ===")
+        print(page.get_text("text", sort=True)[:1500])
+    
 if __name__ == "__main__":
-    inspect_pdf_layout("data/sample.pdf")
+    # inspect_pdf_layout("data/sample.pdf")
+    # inspect_complex_pdf("data/complex_layout.pdf")
+    inspect_table_layout("data/complex_layout.pdf")
+    
+    
+    # import pymupdf4llm
+
+    # markdown = pymupdf4llm.to_markdown(
+    #     "data/complex_layout.pdf",
+    #     pages=[1],  # Zero-based: second page
+    #     use_ocr=False,
+    # )
+    
+    # print(repr(markdown[:1500]))
+
+    # print(markdown)
+    
+    # headings = [
+    #     "3. Detection & Triage",
+    #     "3.1 Diagnostic signals",
+    #     "4. Recovery Actions",
+    #     "4.1 Validation",
+    # ]
+
+    # for heading in headings:
+    #     position = markdown.find(heading)
+    #     print(f"{heading}: position={position}")
+
