@@ -7,15 +7,19 @@ name = "01-document-engineering"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "charset-normalizer" },
     { name = "langchain-core" },
     { name = "langchain-pymupdf4llm" },
+    { name = "langchain-text-splitters" },
     { name = "pymupdf" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "charset-normalizer", specifier = ">=3.5.2" },
     { name = "langchain-core", specifier = ">=1.7.3" },
     { name = "langchain-pymupdf4llm", specifier = "==1.28.0" },
+    { name = "langchain-text-splitters", specifier = ">=1.1.3" },
     { name = "pymupdf", specifier = ">=1.28,<1.29" },
 ]
 
@@ -331,6 +335,18 @@ dependencies = [
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/18/9d/f8b0230c6b26b1a150dc6e85e426dd1b12c7107538747623696a47421d5e/langchain_pymupdf4llm-1.28.0-py3-none-any.whl", hash = "sha256:58b1306ed5296441c6265247ada08648f4157624f6243898d172786768866f50", size = 33691, upload-time = "2026-07-01T22:19:04.636Z" },
+]
+
+[[package]]
+name = "langchain-text-splitters"
+version = "1.1.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "langchain-core" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/85/22/d401fffe8d3f1339f6ac880e5d637db73933efa95635304849b2d44ab0fe/langchain_text_splitters-1.1.3.tar.gz", hash = "sha256:929b6c76f99d611a5b1d8f5591ef302909b86a436ceb3217034d24e4757868d8", size = 308295, upload-time = "2026-10-02T15:46:33.173Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c7/51/2880d2e88cce13c1180178f7e8dc796c2f45b2dc09cc09ed407d116c08cc/langchain_text_splitters-1.1.3-py3-none-any.whl", hash = "sha256:50edeb318b3be6a6308dddd7d616ab82823a9ccbea59a9c14c58a7b91df60295", size = 38217, upload-time = "2026-10-02T15:46:32.271Z" },
 ]
 
 [[package]]
