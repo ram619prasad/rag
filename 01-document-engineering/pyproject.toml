@@ -7,6 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "beautifulsoup4>=4.15.0",
     "charset-normalizer>=3.5.2",
+    "docling>=2.145.0",
     "docx2txt>=0.9",
     "langchain-community>=0.4.2",
     "langchain-core>=1.7.3",
