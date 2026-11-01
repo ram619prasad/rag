@@ -1,0 +1,17 @@
+[project]
+name = "02-chunking-engineering"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "langchain-core>=1.7.3",
+    "langchain-text-splitters>=1.1.3",
+]
+
+[project.scripts]
+02-chunking-engineering = "02_chunking_engineering:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
