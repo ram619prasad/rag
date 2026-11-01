@@ -1,0 +1,42 @@
+{
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/complex_layout.pdf": {
+    "hash": "80e321d1a70fe9ac28fe16e332416443e135f33473233ddd0ce4e5a6454f1a7e",
+    "pipeline_version": "docling-v1"
+  },
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/docling_output.md": {
+    "hash": "f01ad715cc32d27828ff63c08a5f2611cacef81563335a4023111bd440e54752",
+    "pipeline_version": "docling-v1"
+  },
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/engineering_notes.md": {
+    "hash": "e25a8e335193b39b22d6102f0c5c0b8213120974922e114803d4ff3be3edda03",
+    "pipeline_version": "docling-v1"
+  },
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/legacy_notes.txt": {
+    "hash": "d1663bcead92ee18996ff3a41e8e1bf0c4e3e0e780324793d76b6fbad4d4f786",
+    "pipeline_version": "docling-v1"
+  },
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/mixed_incident.pdf": {
+    "hash": "72c960be95cd063f5ff62591c3049b1cf40c8879025ff8c0215517878a299c1f",
+    "pipeline_version": "docling-v1"
+  },
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/payment_service.docx": {
+    "hash": "da30b8dfb250b5bc016d043ae4c85bd590a7b5c91ad96c754a0e2cf7b536bfaf",
+    "pipeline_version": "docling-v1"
+  },
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/payment_service.html": {
+    "hash": "5e8581b464ee5cf2cc5c63a7ee28ef03d68f1acf97820958399b7fff556eab54",
+    "pipeline_version": "docling-v1"
+  },
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/sample-heavy.pdf": {
+    "hash": "c3c05bec008532bf18df9e652ff19e974d9358d4a683134d9e26ed8a3fc72b3a",
+    "pipeline_version": "docling-v1"
+  },
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/sample.pdf": {
+    "hash": "40c5b733d0e21c53a9e40fa6eb9df01bb6898b842f5f13bd42db5624c2a97dd0",
+    "pipeline_version": "docling-v1"
+  },
+  "/Users/sidvik/Learning/rag/01-document-engineering/data/scanned_incident.pdf": {
+    "hash": "b03e7b331dc650c142f409bbabeed857d36cf6767bbdfa2d0d490f7d3efd4ab2",
+    "pipeline_version": "docling-v1"
+  }
+}
