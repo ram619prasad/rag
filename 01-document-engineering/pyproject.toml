@@ -9,6 +9,7 @@ dependencies = [
     "charset-normalizer>=3.5.2",
     "docling>=2.145.0",
     "docx2txt>=0.9",
+    "jiwer>=4.0.0",
     "langchain-community>=0.4.2",
     "langchain-core>=1.7.3",
     "langchain-pymupdf4llm==1.28.0",
