@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "docling>=2.145.0",
     "langchain-core>=1.7.3",
     "langchain-experimental>=0.4.2",
     "langchain-huggingface[full]>=1.2.3",
