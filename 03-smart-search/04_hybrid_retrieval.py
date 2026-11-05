@@ -4,6 +4,8 @@ from pathlib import Path
 import csv
 import json
 from dotenv import load_dotenv
+import ir_measures
+from ir_measures import R, P, RR, nDCG
 
 from langchain_core.documents import Document
 from langchain_community.retrievers import BM25Retriever
@@ -49,7 +51,12 @@ def tokenize(text: str) -> list[str]:
     return re.findall(r"\b\w+\b", text.lower())
 
 
-def create_hybrid_retriever(corpus: dict, vector_store: Chroma):
+def create_hybrid_retriever(
+    corpus: dict,
+    vector_store: Chroma,
+    bm25_weight: float = 0.5,
+    candidate_k: int = 20,
+):
     # Convert SciFact records to LangChain Documents.
     documents = [
         Document(
@@ -71,26 +78,22 @@ def create_hybrid_retriever(corpus: dict, vector_store: Chroma):
         documents,
         preprocess_func=tokenize,
     )
-    bm25.k = 20
+    bm25.k = candidate_k
 
     # Existing Chroma semantic retriever.
     semantic = vector_store.as_retriever(
-        search_kwargs={"k": 20}
+        search_kwargs={"k": candidate_k}
     )
 
     # Hybrid retrieval using weighted RRF.
     hybrid = EnsembleRetriever(
         retrievers=[bm25, semantic],
-        weights=[0.5, 0.5],
+        weights=[bm25_weight, 1 - bm25_weight],
+        c=60,
         id_key="doc_id",
     )
 
     return hybrid
-
-
-
-import ir_measures
-from ir_measures import R, P, RR, nDCG
 
 
 def verify_hybrid(

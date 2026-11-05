@@ -47,3 +47,24 @@ Build and evaluate keyword, semantic, and hybrid retrieval using a consistent be
 - Hybrid retrieval did not improve Recall@5 on these two sample queries.
 - Candidate coverage limits fusion: a relevant document missing from both candidate sets cannot be promoted by RRF.
 - Larger candidate sets and fusion-weight experiments are deferred to Module 05.
+
+---
+### Module 05 — Reciprocal Rank Fusion (RRF)
+
+**Implementation:** LangChain `EnsembleRetriever` using weighted RRF.
+
+**Parameters evaluated:**
+- Candidate depth: 20, 50
+- BM25 weights: 0.25, 0.50, 0.75
+- RRF constant: `c=60`
+
+**Key findings:**
+- With 20 candidates per retriever, Query 1's relevant document was missing from the fused candidate set.
+- Increasing candidate depth to 50 allowed the relevant document to enter the fused ranking.
+- With 50 candidates, the relevant document ranked 37, 69, and 82 for BM25 weights 0.25, 0.50, and 0.75 respectively.
+- Increasing semantic weight improved the relevant document's ranking for this particular query.
+- None of the configurations placed the relevant document in the final top five.
+
+**Conclusion:** RRF combines rankings effectively, but successful retrieval depends on candidate coverage, fusion weights, and final ranking quality.
+
+Parameter tuning across the full benchmark is deferred to Module 07.
