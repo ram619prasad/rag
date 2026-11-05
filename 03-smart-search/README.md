@@ -68,3 +68,81 @@ Build and evaluate keyword, semantic, and hybrid retrieval using a consistent be
 **Conclusion:** RRF combines rankings effectively, but successful retrieval depends on candidate coverage, fusion weights, and final ranking quality.
 
 Parameter tuning across the full benchmark is deferred to Module 07.
+
+---
+
+### Module 06 — Metadata Filtering
+
+**Implementation:** Chroma metadata filtering using `$in`.
+
+**Experiment:**
+- Unfiltered search: 5 results from 5,183 eligible documents.
+- Filtered search: 3 results from 3 eligible documents.
+- Verified that filtered results contained only the allowed document IDs.
+
+**Key findings:**
+- Metadata filtering restricts which documents are eligible for semantic retrieval.
+- Chroma applies the filter as part of retrieval.
+- Filtering before top-K selection avoids losing eligible documents that would otherwise be outside the unfiltered top K.
+- Metadata filters do not modify document embeddings.
+
+---
+
+## Project 03 — Final Results
+
+**Status:** Completed (learning scope)
+
+### Implemented
+
+- SciFact dataset preparation and validation (5,183 documents)
+- BM25 keyword retrieval
+- Dense semantic retrieval with OpenAI embeddings and Chroma
+- Hybrid retrieval using LangChain EnsembleRetriever
+- Weighted Reciprocal Rank Fusion
+- Chroma metadata filtering
+- Retrieval evaluation using ir-measures
+- Reproducible benchmark integration
+
+### Benchmark Configuration
+
+- Dataset: BEIR SciFact
+- Evaluation split: Train
+- Queries: 20 (deterministic random sample, seed 42)
+- Embedding model: text-embedding-3-small
+- Hybrid weights: BM25 0.5, Semantic 0.5
+- RRF constant: 60
+- Candidate depth: 20 per retriever
+
+### Results
+
+| Metric | BM25 | Semantic | Hybrid |
+|---|---:|---:|---:|
+| Recall@5 | 0.6750 | 0.9250 | 0.8000 |
+| Recall@10 | 0.7000 | 0.9250 | 0.9500 |
+| Precision@10 | 0.0800 | 0.1000 | 0.1050 |
+| RR@10 | 0.6125 | 0.7517 | 0.7035 |
+| nDCG@10 | 0.6383 | 0.7930 | 0.7605 |
+
+### Key Learnings
+
+1. BM25 and dense retrieval have complementary strengths.
+2. Semantic retrieval achieved the best early-ranking quality in our sample.
+3. Hybrid retrieval achieved the highest Recall@10.
+4. RRF can improve or degrade rankings depending on query characteristics and fusion settings.
+5. Metadata filtering restricts the eligible search space before ranking.
+6. Retrieval quality should be measured using ground-truth relevance judgments.
+
+### Limitations
+
+- Results are based on only 20 training queries.
+- RRF weights were not systematically optimized.
+- Full 300-query held-out test evaluation was deferred.
+- Latency, cost, and production-scale performance were not benchmarked.
+
+### Reproduce
+
+```bash
+uv run 07_retrieval_evaluation.py
+```
+
+Requires the downloaded SciFact dataset, existing Chroma index, and configured OpenAI API key.
